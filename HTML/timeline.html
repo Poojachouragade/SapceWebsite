@@ -1,0 +1,259 @@
+<html>
+<head>
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            --color: white;
+            --bgColor: #301934;
+            min-height: 100vh;
+            display: grid;
+            align-content: center;
+            gap: 2rem;
+            padding: 2rem;
+            font-family: "Poppins", sans-serif;
+            color: var(--color);
+            background: var(--bgColor);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        ul {
+            --col-gap: 2rem;
+            --row-gap: 2rem;
+            --line-w: 0.25rem;
+            display: grid;
+            grid-template-columns: var(--line-w) 1fr;
+            grid-auto-columns: max-content;
+            column-gap: var(--col-gap);
+            list-style: none;
+            width: min(60rem, 90%);
+            margin-inline: auto;
+        }
+
+            /* line */
+            ul::before {
+                content: "";
+                grid-column: 1;
+                grid-row: 1 / span 20;
+                background: white;
+                border-radius: calc(var(--line-w) / 2);
+            }
+
+            /* columns*/
+
+            /* row gaps */
+            ul li:not(:last-child) {
+                margin-bottom: var(--row-gap);
+            }
+
+            /* card */
+            ul li {
+                grid-column: 2;
+                --inlineP: 1.5rem;
+                margin-inline: var(--inlineP);
+                grid-row: span 2;
+                display: grid;
+                grid-template-rows: min-content min-content min-content;
+            }
+
+                /* date */
+                ul li .date {
+                    --dateH: 3rem;
+                    height: var(--dateH);
+                    margin-inline: calc(var(--inlineP) * -1);
+                    text-align: center;
+                    background-color: var(--accent-color);
+                    color: white;
+                    font-size: 1.25rem;
+                    font-weight: 700;
+                    display: grid;
+                    place-content: center;
+                    position: relative;
+                    border-radius: calc(var(--dateH) / 2) 0 0 calc(var(--dateH) / 2);
+                }
+
+                    /* date flap */
+                    ul li .date::before {
+                        content: "";
+                        width: var(--inlineP);
+                        aspect-ratio: 1;
+                        background: var(--accent-color);
+                        background-image: linear-gradien(black, transparent);
+                        position: absolute;
+                        top: 100%;
+                        clip-path: polygon(0 0, 100% 0, 0 100%);
+                        right: 0;
+                    }
+
+                    /* circle */
+                    ul li .date::after {
+                        content: "";
+                        position: absolute;
+                        width: 2rem;
+                        aspect-ratio: 1;
+                        background: var(--bgColor);
+                        border: 0.3rem solid var(--accent-color);
+                        border-radius: 50%;
+                        top: 50%;
+                        transform: translate(50%, -50%);
+                        right: calc(100% + var(--col-gap) + var(--line-w) / 2);
+                    }
+
+                /* title descr */
+                ul li .title,
+                ul li .descr {
+                    background: #009688;
+                    position: relative;
+                    padding-inline: 1.5rem;
+                }
+
+                ul li .title {
+                    overflow: hidden;
+                    padding-block-start: 1.5rem;
+                    padding-block-end: 1rem;
+                    font-weight: 500;
+                }
+
+                ul li .descr {
+                    padding-block-end: 1.5rem;
+                    font-weight: 300;
+                }
+
+                    /* shadows */
+                    ul li .title::before,
+                    ul li .descr::before {
+                        content: "";
+                        position: absolute;
+                        width: 90%;
+                        height: 0.5rem;
+                        background: white;
+                        left: 50%;
+                        border-radius: 50%;
+                        filter: blur(4px);
+                        transform: translate(-50%, 50%);
+                    }
+
+                ul li .title::before {
+                    bottom: calc(100% + 0.125rem);
+                }
+
+                ul li .descr::before {
+                    z-index: -1;
+                    bottom: 0.25rem;
+                }
+
+        @media (min-width: 40rem) {
+            ul {
+                grid-template-columns: 1fr var(--line-w) 1fr;
+            }
+
+                ul::before {
+                    grid-column: 2;
+                }
+
+                ul li:nth-child(odd) {
+                    grid-column: 1;
+                }
+
+                ul li:nth-child(even) {
+                    grid-column: 3;
+                }
+
+                /* start second card */
+                ul li:nth-child(2) {
+                    grid-row: 2/4;
+                }
+
+                ul li:nth-child(odd) .date::before {
+                    clip-path: polygon(0 0, 100% 0, 100% 100%);
+                    left: 0;
+                }
+
+                ul li:nth-child(odd) .date::after {
+                    transform: translate(-50%, -50%);
+                    left: calc(100% + var(--col-gap) + var(--line-w) / 2);
+                }
+
+                ul li:nth-child(odd) .date {
+                    border-radius: 0 calc(var(--dateH) / 2) calc(var(--dateH) / 2) 0;
+                }
+        }
+
+        .credits {
+            margin-top: 1rem;
+            text-align: right;
+        }
+
+            .credits a {
+                color: var(--color);
+            }
+   
+    </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<br>
+<br>
+<br>
+<br>
+
+<h1>Timeline of Chandrayaans</h1>
+<br>
+<br>
+<h1>Timeline of Chandrayaans</h1>
+
+<ul>
+   
+    <li style="--accent-color:#41516C">
+        <div class="date">2008</div>
+        <div class="title"><b>Chandrayaan 1</b></div>
+        <div class="descr"> Chandrayaan-1, launched by the Indian Space Research Organisation (ISRO) in 2008, was instrumental in the discovery of water molecules on the Moon's surface, challenging earlier assumptions about its dryness. The mission also detected key minerals and contributed valuable data for lunar exploration, marking a significant milestone in India's space exploration endeavors.
+        </div>
+    </li>
+
+    <li style="--accent-color:#FBCA3E">
+        <div class="date">2019</div>
+        <div class="title"><b>Chandrayaan 2</b></div>
+        <div class="descr">Chandrayaan-2, launched by the Indian Space Research Organisation (ISRO) in 2019, aimed to further explore the Moon, with a focus on the lunar south pole region. The mission included an orbiter, lander named Vikram, and rover named Pragyan, with the orbiter continuing to provide valuable data on the Moon's surface and atmosphere after the lander encountered a hard landing..</div>
+    </li>
+
+
+    <li style="--accent-color:#E24A68">
+        <div class="date">2023</div>
+        <div class="title"><b>Chandrayaan 3</b></div>
+        <div class="descr">Chandrayaan-3, India's latest lunar mission, successfully landed in August 2023, making it the first nation to attempt a soft landing near the moon's south pole. Though the lander Vikram had a hard landing and communications were lost, the rover Pragyan is operational and exploring the lunar surface, studying geology and searching for water ice.
+     </li>
+          
+     <li style="--accent-color:#1B5F8C">
+        <div class="date">2026</div>
+        <div class="title"><b>LUPEX</b></div>
+        <div class="descr">Lupex 2026, a collaboration between India and Japan, is a planned mission to the Moon's South Pole, targeted for no earlier than 2026. It aims to map and analyze water resources in this region, using a Japanese rover and an Indian lander equipped with cutting-edge technology for surviving the harsh lunar night. This mission could unlock future possibilities for sustained lunar exploration and resource utilization.</div>
+    </li>
+    <li style="--accent-color:#4CADAD">
+        <div class="date">2028</div>
+        <div class="title"><b>Chandrayaan 4</b></div>
+        <div class="descr">Chandrayaan-4, with a planned launch in 2028, will mark India's ambitious step towards lunar sample return. Not only will it land near the south polar region, but it will also boast a rover capable of collecting lunar samples and returning them to Earth for detailed analysis. This mission will offer crucial insights into the Moon's composition and pave the way for future scientific discoveries.</div>
+    </li>
+</ul>
+</html>
